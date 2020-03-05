@@ -1,0 +1,53 @@
+cd 进入到创建项目根目录，通过以下命令创建项目目录：
+django-admin startproject dddd（项目名）
+
+
+C:\Users\Lenovo、\Desktop\django\vue_shop>python manage.py runserver 0.0.0.0:80
+用作调试
+然后浏览器地址端输入
+127.0.0.1
+
+
+ALLOW HOST【】中添加调试的地址，本机调试地址
+125.217.248.90
+或者添加localhost
+
+
+Django 中创建app 可以 通过执行命令，创建一个app目录，并在里面自动创建app常用的文件，cd到根目录：
+python manage.py startapp sales 
+这样就会创建一个目录名为 sales， 对应 一个名为 sales 的app，里面包含了如下自动生成的文件：
+__init__.py
+admin.py
+apps.py
+migrations/
+      __init__.py
+models.py
+tests.py
+views.py         用作返回字符串给浏览器
+
+
+注意二级路由表要把主路由表中的分类去掉
+
+
+orm：django集成好的，通过对数据的操作
+
+python manage.py makemigrations common   用作观看common app的变更
+然后，再通过以下命令更新数据库文件：python manage.py migrate
+
+我们需要到管理员配置文件。。。/admin.py，注册我们定义的model类，这样才能在管理员系统查看并且更改：
+from django.contrib import admin
+from .models import Customer
+admin.site.register(Customer)
+ 
+通过命令：python manage.py createsuperuser  可以创建管理员，以管理员身份在 http://localhost/admin/  进行操作
+
+Django 中 对数据库表的操作， 应该都通过 Model对象 实现对数据的读写，而不是通过SQL语句
+在对应的view.py文件中import对应的model，定义对应的处理函数，然后在urls.py中修改路由地址，记得在总的urls中也要修改对应的路由地址
+
+# 检查url中是否有参数phonenumber
+    ph =  request.GET.get('phonenumber',None)
+.GET是一个类似于字典的对象，用get（）方法来获取对应的http请求要求
+filter（）函数用作过滤器，让数据记录来调用
+
+
+http://localhost/index.html

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>参赛队伍报名</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
+    <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'js/js.js' %}"></script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="cont">
+        <div class="top"><span class="col-1"></span><span class="col-2"></span><span class="col-3"></span><span class="col-4"></span></div>
+            <form>
+                <h5>参赛队伍信息填写</h5>
+                <div class="team_name input" id="team_name" placeholder='队名' correct='格式正确' wrong='*请输入正确的'><input type="text" id="team_name1"></div>
+                <br>
+                <div class="boss_name input" id="boss_name" placeholder='队长姓名' correct='格式正确' wrong='*请输入正确的'><input type="text" id="boss_name1"></div>
+                <br>
+                <div class="boss_phone input" id="boss_phone" placeholder='队长手机号' correct='格式正确' wrong='*请输入正确的'><input type="text" id="boss_phone1"></div>
+                <br>
+                <div class="boss_classes input" id="boss_classes" placeholder='队长班级' correct='格式正确' wrong='*请输入正确的'><input type="text" id="boss_classes1"></div>
+                <br>
+                <div class="boss_num input" id="boss_num" placeholder='学号' correct='格式正确' wrong='*请输入正确的'><input type="text" id="boss_num1"></div>
+                <br>
+                <div class="members" id="members">选择队员数量:<br>
+                <br>
+                    <button id='mem_button' type="button">确认</button>
+                    <input type="radio" name="members" id="members_1" value="1">1名成员
+                    <input type="radio" name="members" id="members_2" value="2">2名成员
+                    <input type="radio" name="members" id="members_3" value="3">3名成员
+                </div>
+                <br>
+                <div class="top" id="scape1"><span class="col-1"></span><span class="col-2"></span><span class="col-3"></span><span class="col-4"></span></div>
+                <div id="member2">队员2<br>
+                 <br>
+                 <br>
+                 <div class="input2" id="member2_name" placeholder='姓名' correct='格式正确' wrong='*请输入正确的'><input type="text" id="member2_name1"></div>
+                 <br>
+                 <div class="input2" id="member2_classes" placeholder='班级' correct='格式正确' wrong='*请输入正确的'><input type="text" id="member2_classes1"></div>
+                 <br>
+                 <div class="input2" id="member2_num" placeholder='学号' correct='格式正确' wrong='*请输入正确的'><input type="text" id="member2_num1"></div>
+                 <br>
+                </div>
+                <div class="top" id="scape2"><span class="col-1"></span><span class="col-2"></span><span class="col-3"></span><span class="col-4"></span></div>
+                <div id="member3">队员3<br>
+                    <br>
+                    <br>
+                    <div class="input3" id="member3_name" placeholder='姓名' correct='格式正确' wrong='*请输入正确的'><input type="text" id="member3_name1"></div>
+                    <br>
+                    <div class="input3" id="member3_classes" placeholder='班级' correct='格式正确' wrong='*请输入正确的'><input type="text" id="member3_classes1"></div>
+                    <br>
+                    <div class="input3" id="member3_num" placeholder='学号' correct='格式正确' wrong='*请输入正确的'><input type="text" id="member3_num1"></div>
+                    <br>
+                </div>
+            </form>
+            <br>
+            <div class="but"><button class="button" id="button" type="submit" onclick="submit()">确认提交</button></div>
+    </div>
+
+</body>
+
+
+<script>
+        $('#member2').hide();
+        $('#member3').hide();
+        $('#scape1').hide();
+        $('#scape2').hide();
+</script>
+
+<script src="{% static 'js/focus.js' %}"></script>
+<script src="{% static 'js/check.js' %}"></script>
+<script src="{% static 'js/check_num.js' %}"></script>
+<script src="{% static 'js/submit.js' %}"></script>
+
+<script>
+
+    var can = document.getElementById("canvas");
+    //设置绘图环境
+    var cxt = can.getContext("2d");
+    //获取浏览器窗口的宽高
+    var w = can.width = window.innerWidth;
+    var h = can.height = window.innerHeight;
+    //让画布的宽高跟随浏览器窗口的变化而变化
+    window.onresize = function() {
+        w = can.width = window.innerWidth;
+        h = can.height = window.innerHeight;
+    };
+    var drops = [];
+    
+    set();
+    
+    move();
+
+</script>
+
+    </html>
