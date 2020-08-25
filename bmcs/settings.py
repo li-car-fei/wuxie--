@@ -25,8 +25,9 @@ SECRET_KEY = 's3*a-ch*4e#b))a9lk4k3a$49gm1xprw@s2b43w(53zka586(h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['125.217.248.90',
+ALLOWED_HOSTS = ['125.217.248.90','127.0.0.1',
                  'localhost']
+
 
 
 # Application definition
@@ -39,9 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
-    #比原始添加下行
-    'common.apps.CommonConfig',
+    # 添加app服务
+    'info',
 ]
 
 MIDDLEWARE = [

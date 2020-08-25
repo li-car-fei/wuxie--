@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>参赛队伍信息</title>
+    <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+</head>
+<body>
+<table id="table" border="1" cellspacing="0" cellpadding="0" >
+   <tr>
+        <th>队伍名称</th>
+       <th>队伍人数</th>
+        <th>队长姓名</th>
+        <th>队长电话号码</th>
+        <th>队长班级</th>
+        <th>队长学号</th>
+       <th>队员2姓名</th>
+       <th>队员2学号</th>
+       <th>队员2班级</th>
+       <th>队员3姓名</th>
+       <th>队员3学号</th>
+       <th>队员3班级</th>
+    </tr>
+</table>
+
+<script>
+    window.onload=function(){
+        var table=document.getElementById("table");
+        $.get('http://127.0.0.1:8000/info/teams',function(dict){
+            var data=dict;
+            for(let i=0;i<=dict.length;i++){
+                var row=table.insertRow(table.rows.length);
+                var c1=row.insertCell(0);
+                c1.innerHTML=data[i].fields.team_name;
+                var c2=row.insertCell(1);
+                c2.innerHTML=data[i].fields.team_members;
+                var c3=row.insertCell(2);
+                c3.innerHTML=data[i].fields.boss_name;
+                var c4=row.insertCell(3);
+                c4.innerHTML=data[i].fields.boss_phone;
+                var c5=row.insertCell(4);
+                c5.innerHTML=data[i].fields.boss_classes;
+                var c6=row.insertCell(5);
+                c6.innerHTML=data[i].fields.boss_num;
+                var c7=row.insertCell(6);
+                c7.innerHTML=data[i].fields.member2_name;
+                var c8=row.insertCell(7);
+                c8.innerHTML=data[i].fields.member2_num;
+                var c9=row.insertCell(8);
+                c9.innerHTML=data[i].fields.member2_classes;
+                var c10=row.insertCell(9);
+                c10.innerHTML=data[i].fields.member3_name;
+                var c11=row.insertCell(10);
+                c11.innerHTML=data[i].fields.member3_num;
+                var c12=row.insertCell(11);
+                c12.innerHTML=data[i].fields.member3_classes;
+        }
+        });
+
+    }
+
+</script>
+</body>
+</html>
